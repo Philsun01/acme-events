@@ -4,18 +4,38 @@ import moment from 'moment';
 const CreateEvent = ({list, setList}) => {
 
     const [title, setTitle] = useState('');
-    const [date, setDate] = useState('blank');
+    const [date, setDate] = useState('');
     const [desc, setDesc] = useState('');
-    const [dateValid, setDateValid] = useState(false);
+    const [validTitle, setValidTitle] = useState(true);
+    const [validDesc, setValidDesc] = useState(true);
+    const [validDate, setValidDate] = useState(true);
     const onSubmit = (ev) => {
         ev.preventDefault();
         
-        const newEvent = {
-            title,
-            date,
-            desc
+        if(!moment(date,'MM/DD/YYYY',true).isValid()){
+            setValidDate(false)
+        } else { 
+            setValidDate(true) 
         }
-        setList([newEvent, ...list]); 
+
+        if(!desc){ setValidDesc(false); 
+            } else { setValidDesc(true); }
+        
+        if(!title){ setValidTitle(false); } 
+            else { setValidTitle(true); }
+
+        if( desc && title && moment(date,'MM/DD/YYYY',true).isValid()){
+            const newEvent = {
+                title,
+                date,
+                desc
+            }
+            setList([newEvent, ...list]);
+            setDate('');
+            setTitle('');
+            setDesc('');
+        }
+         
     }
     
     return (
@@ -28,10 +48,11 @@ const CreateEvent = ({list, setList}) => {
                     <input  name = 'title'
                             value = {title} 
                             type = 'text' 
-                            onChange = {ev => {    
-                                setTitle(ev.target.value); 
-                                }}
-                            />
+                            onChange = {ev => {setTitle(ev.target.value)} }
+                            placeholder = 'title here' />
+                    <div className = 'error'
+                         hidden = {validTitle}>
+                         Please enter a valid title</div>
                 </div>
 
                 <div className = 'form-group'>
@@ -39,26 +60,24 @@ const CreateEvent = ({list, setList}) => {
                     <input  name = 'date' 
                             value = {date}
                             type = 'text' 
-                            onChange = {ev => {
-                                setDate(ev.target.value);
-                                setDateValid(moment(date,'MM/DD/YYYY',true).isValid());
-                                }} 
-                            
-                            />
-                    
+                            onChange = {ev => {setDate(ev.target.value)}} 
+                            placeholder = 'MM/DD/YYYY' />
+                    <div className = 'error'
+                         hidden = {validDate}>
+                         Please enter a date in MM/DD/YYYY format</div>
                 </div>
 
                 <div className = 'form-group'>
                     <label>Description</label>
                     <input  name = 'content'
+                            className = 'largebox'
                             value = {desc}  
                             type = 'text' 
-                            onChange = {ev => {
-                                setDesc(ev.target.value);
-                                
-                            }}
-                            
-                            />
+                            onChange = {ev => {setDesc(ev.target.value) }}
+                            placeholder = 'Description Here' />
+                    <div className = 'error'
+                         hidden = {validDesc}>
+                         Please enter a description</div>
                 </div>
 
                 <button name = 'save' 

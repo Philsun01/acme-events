@@ -12,12 +12,12 @@ const demo = [
   {
     title: "MLK Holiday",
     desc: "It's a government Holiday",
-    date: 'Jan 20'
+    date: '01/20/2020'
   },
   {
     title: "Another Holiday",
     desc: "Make something up",
-    date: 'Feb 40'
+    date: '02/16/2020'
   }
 
 ]
@@ -26,8 +26,8 @@ const [list, setList] = useState(demo);
 
   return (
     <div className = 'container'>
-      <h1 className = 'header'>Acme Events List ({list.length} Events booked)</h1>
-      <p> Welcome! Today is {today.toLocaleDateString()}</p>
+      <h1 className = 'header'>Acme Events List <br/> ({list.length} Events booked)</h1>
+      <h2> Welcome! Today is {today.toLocaleDateString()}</h2>
       <div className = 'sub-container'>
         <CreateEvent list = {list} setList = {setList} />
         <EventList list = {list} setList = {setList}/>
