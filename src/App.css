@@ -15,15 +15,16 @@ body {
 .sub-container {
   border-style: dotted;
   display: flex;
+  flex-wrap: wrap;
   flex: 1;
   margin: 1rem;
   padding: 0.5rem;
-  flex-wrap: wrap;
+  
 }
 
 .sub-container > * { 
   
-  min-width: 3rem;
+  min-width: 10rem;
   border-style: solid;
   display: flex;
   flex-direction: column;

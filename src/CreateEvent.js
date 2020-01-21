@@ -1,13 +1,15 @@
 import React, {useState} from 'react';
+import moment from 'moment';
 
 const CreateEvent = ({list, setList}) => {
 
-    const [title, setTitle] = useState('title');
-    const [date, setDate] = useState('date');
-    const [desc, setDesc] = useState('Some Text here');
-    const [valid, setValid] = useState(false);
+    const [title, setTitle] = useState('');
+    const [date, setDate] = useState('blank');
+    const [desc, setDesc] = useState('');
+    const [dateValid, setDateValid] = useState(false);
     const onSubmit = (ev) => {
         ev.preventDefault();
+        
         const newEvent = {
             title,
             date,
@@ -15,45 +17,54 @@ const CreateEvent = ({list, setList}) => {
         }
         setList([newEvent, ...list]); 
     }
-
+    
     return (
         <div className = 'card'>
-            <form name = 'eventInput' onSubmit = {onSubmit}>
+        
+            <form name = 'create_event' onSubmit = {onSubmit}>
+
                 <div className = 'form-group'>
                     <label>Event Title</label>
-                    <input  name = 'title' 
+                    <input  name = 'title'
+                            value = {title} 
                             type = 'text' 
-                            onChange = {ev => {
-                                setTitle(ev.target.value)
+                            onChange = {ev => {    
+                                setTitle(ev.target.value); 
                                 }}
-                            placeholder = 'title'
                             />
                 </div>
+
                 <div className = 'form-group'>
                     <label>Date</label>
                     <input  name = 'date' 
+                            value = {date}
                             type = 'text' 
                             onChange = {ev => {
-                                setDate(ev.target.value)
+                                setDate(ev.target.value);
+                                setDateValid(moment(date,'MM/DD/YYYY',true).isValid());
                                 }} 
-                            placeholder = 'date'
+                            
                             />
+                    
                 </div>
+
                 <div className = 'form-group'>
                     <label>Description</label>
-                    <input  name = 'content'  
+                    <input  name = 'content'
+                            value = {desc}  
                             type = 'text' 
                             onChange = {ev => {
-                                setDesc(ev.target.value)
+                                setDesc(ev.target.value);
+                                
                             }}
-                            placeholder = 'description'
+                            
                             />
                 </div>
+
                 <button name = 'save' 
                         className = 'btn-primary'
-                        disabled = {valid}
                         > Save </button> 
-            </form>
+            </form> 
         </div>
     )
 }

@@ -1,21 +1,22 @@
 import React, {useState} from 'react';
-import moment from 'moment';
+
 import CreateEvent from './CreateEvent';
 import EventList from './EventList';
-
 import './App.css';
+
+
 const today = new Date();
 function App() {
 
 const demo = [
   {
     title: "MLK Holiday",
-    content: "It's a government Holiday",
+    desc: "It's a government Holiday",
     date: 'Jan 20'
   },
   {
     title: "Another Holiday",
-    content: "Make something up",
+    desc: "Make something up",
     date: 'Feb 40'
   }
 

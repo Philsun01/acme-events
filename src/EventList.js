@@ -19,7 +19,7 @@ const EventList = ({list, setList}) =>{
                                 <div className = 'list-group-item' key = {idx}>
                                     <h3>{event.title}</h3>
                                     <p>{event.date}</p>
-                                    <p>{event.content}</p>
+                                    <p>{event.desc}</p>
                                     <button onClick = {() => deleteEvent(idx)}> Delete Event</button>
                                 </div>
                             )
