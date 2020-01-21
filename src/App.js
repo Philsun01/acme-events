@@ -1,25 +1,38 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, {useState} from 'react';
+import moment from 'moment';
+import CreateEvent from './CreateEvent';
+import EventList from './EventList';
 
+import './App.css';
+const today = new Date();
 function App() {
+
+const demo = [
+  {
+    title: "MLK Holiday",
+    content: "It's a government Holiday",
+    date: 'Jan 20'
+  },
+  {
+    title: "Another Holiday",
+    content: "Make something up",
+    date: 'Feb 40'
+  }
+
+]
+
+const [list, setList] = useState(demo);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className = 'container'>
+      <h1 className = 'header'>Acme Events List ({list.length} Events booked)</h1>
+      <p> Welcome! Today is {today.toLocaleDateString()}</p>
+      <div className = 'sub-container'>
+        <CreateEvent list = {list} setList = {setList} />
+        <EventList list = {list} setList = {setList}/>
+      </div>
     </div>
+
   );
 }
 
