@@ -1,8 +1,5 @@
 body {
-  
-  
-  background-color: lightslategray;
-  
+ background-color: lightslategray; 
 }
 
 .container  {
@@ -13,13 +10,11 @@ body {
 }
 
 .sub-container {
-  
   display: flex;
   flex-wrap: wrap;
   flex: 1;
   margin: 1rem;
   padding: 0.5rem;
-  
 }
 
 .sub-container > * { 
@@ -55,9 +50,11 @@ input, button {
 
 .list > * {
   width: 100%;
+  border-style: solid;
   margin-bottom: 0.5rem;
   border-radius: 0.5rem;
-  background-color: lightseagreen;
+  padding: 0.5rem;
+  
 }
 
 .largebox {
@@ -67,5 +64,20 @@ input, button {
 
 .error {
   color: red;
+}
+
+.today {
+  background-color: lightseagreen;
+}
+
+.past {
+  background-color: gray;
+}
+
+.alert {
+  background-color: greenyellow;
+  text-align: center;
+  border-radius: 0.5rem;
+  
 }
 

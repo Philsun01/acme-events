@@ -1,9 +1,7 @@
 import React, {useState} from 'react';
-
 import CreateEvent from './CreateEvent';
 import EventList from './EventList';
 import './App.css';
-
 
 const today = new Date();
 function App() {
@@ -12,13 +10,22 @@ const demo = [
   {
     title: "MLK Holiday",
     desc: "It's a government Holiday",
-    date: '01/20/2020'
+    date: '01/21/2020'
   },
   {
     title: "Another Holiday",
     desc: "Make something up",
-    date: '02/16/2020'
-  }
+    date: '02/16/2019'
+  },
+  {
+    title: "Lucky Charms Day",
+    desc: "Eat Cereal",
+    date: '03/16/2180'
+  },{
+    title: "Something in the past",
+    desc: "I forgot",
+    date: '01/11/2005'
+  },
 
 ]
 

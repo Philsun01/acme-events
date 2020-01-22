@@ -60,7 +60,9 @@ const CreateEvent = ({list, setList}) => {
                     <input  name = 'date' 
                             value = {date}
                             type = 'text' 
-                            onChange = {ev => {setDate(ev.target.value)}} 
+                            onChange = {
+                                    ev => {setDate(ev.target.value)}
+                                } 
                             placeholder = 'MM/DD/YYYY' />
                     <div className = 'error'
                          hidden = {validDate}>
